@@ -1,0 +1,22 @@
+# .github/workflows/scrape-bachelor-programs.yml
+name: Scrape Bachelor Programs
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly on Monday at 2 AM
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: pip install -r requirements.txt
+      - run: python bachelor_portal_scraper.py
+      - run: python bachelor_data_processor.py
+      - name: Upload to Supabase
+        run: python upload_to_supabase.py
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
