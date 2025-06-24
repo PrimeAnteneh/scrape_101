@@ -18,5 +18,5 @@ jobs:
       - name: Upload to Supabase
         run: python upload_to_supabase.py
         env:
-          SUPABASE_URL: ${{ https://sopbagviruhfkpenamab.supabase.co }}
-          SUPABASE_KEY: ${{ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvcGJhZ3ZpcnVoZmtwZW5hbWFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0MDk5MjQsImV4cCI6MjA2NTk4NTkyNH0.xwWJidTIGIqZYn6zIPjFnTA6Hu6TSFzGwqfcwb_jZIk }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
